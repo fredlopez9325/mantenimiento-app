@@ -1,0 +1,7 @@
+{
+  "name": "mantenimiento",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

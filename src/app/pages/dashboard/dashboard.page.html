@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notificaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+
+  <div *ngIf="items_count > 0; else none" style="position:relative;width: 100%">
+    <ion-card  *ngFor="let s of solicitud">
+      <ion-card-header style="padding-bottom:0">
+        <ion-card-subtitle>
+          {{ s.created_at }}
+        </ion-card-subtitle>
+        <ion-card-title style="font-size: 1.1em;">
+          {{ s.user.role }}
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content style="padding-top: 6px">
+        {{ s.descripcion }}
+        <br>
+        <ion-badge style="margin-top: 8px" *ngIf="s.status == 0" color="danger">No atendido</ion-badge>
+        <ion-badge style="margin-top: 8px"  *ngIf="s.status == 1" color="primary">Atendido</ion-badge>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ng-template #none>
+    <ion-img src="/assets/empty.svg"></ion-img>
+    <h4 style="font-weight: 700;font-size: 1.3rem;text-align: center;margin-top: 2em;color: #b5b1b1">
+      No hay notificaciones
+    </h4>
+  </ng-template>
+</ion-content>
